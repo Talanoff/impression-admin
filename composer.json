@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Talanoff\\ImpressionAdminServiceProvider"
+                "Talanoff\\ImpressionAdmin\\ImpressionAdminServiceProvider"
             ]
         }
     }
