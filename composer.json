@@ -1,0 +1,29 @@
+{
+    "name": "talanoff/impression-admin",
+    "description": "Clean & beauty admin panel",
+    "type": "project",
+    "license": "MIT",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Oleh Talanoff",
+            "email": "talanov.o@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Talanoff\\ImpressionAdmin\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Talanoff\\ImpressionAdminServiceProvider"
+            ]
+        }
+    }
+}
