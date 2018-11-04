@@ -26,7 +26,7 @@
       },
         "laravel": {
             "providers": [
-                "Talanoff\\ImpressionAdmin\\ImpressionAdminServiceProvider"
+              "Talanoff\\ImpressionAdmin\\ImpressionAdmin"
             ]
         }
     }
