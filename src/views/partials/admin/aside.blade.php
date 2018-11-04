@@ -13,10 +13,8 @@
                            data-toggle="collapse" data-target="#submenu-{{ $loop->iteration }}"
                            aria-expanded="{{ app('router')->currentRouteNamed($item['compare']) ? 'true' : 'false' }}"
                            aria-controls="submenu-{{ $loop->iteration }}">
-                            <svg width="40" height="40">
-                                <use xlink:href="#{{ $item['icon'] }}"></use>
-                            </svg>
-                            <span class="ml-3">{{ $item['name'] }}</span>
+                            <i class="nav-icon i-{{ $item['icon'] }} mr-3"></i>
+                            {{ $item['name'] }}
                         </a>
                         <ul id="submenu-{{ $loop->iteration }}"
                             class="submenu text-left collapse list-unstyled mb-0{{ app('router')->currentRouteNamed($item['compare']) ? ' show' : ''}}"
