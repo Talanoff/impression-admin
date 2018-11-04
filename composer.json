@@ -1,32 +1,32 @@
 {
-    "name": "talanoff/impression-admin",
-    "description": "Clean & beauty admin panel",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Oleh Talanoff",
-            "email": "talanov.o@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Talanoff\\ImpressionAdmin\\": "src/"
-        }
-    },
-    "minimum-stability": "dev",
-  "prefer-stable": true,
-    "require": {
-        "php": ">=7.1.0"
-    },
-    "extra": {
-      "branch-alias": {
-        "dev-master": "0.1-dev"
-      },
-        "laravel": {
-            "providers": [
-              "Talanoff\\ImpressionAdmin\\ImpressionAdmin"
-            ]
-        }
+  "name": "talanoff/impression-admin",
+  "description": "Clean & beauty admin panel",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Oleh Talanoff",
+      "email": "talanov.o@gmail.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Talanoff\\ImpressionAdmin\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=7.1.0"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Talanoff\\ImpressionAdmin\\ImpressionAdmin"
+      ]
+    }
+  }
 }

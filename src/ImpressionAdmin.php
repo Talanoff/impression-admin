@@ -23,7 +23,7 @@ class ImpressionAdmin extends \Illuminate\Support\ServiceProvider
 
 		$this->publishes([
 			__DIR__ . '/assets/js' => resource_path('js/admin'),
-			__DIR__ . '/asset/sass' => resource_path('sass/admin'),
+			__DIR__ . '/assets/sass' => resource_path('sass/admin'),
 			__DIR__ . '/assets/fonts' => resource_path('fonts'),
 		], 'assets');
 	}
