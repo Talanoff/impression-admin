@@ -1,7 +1,7 @@
 {
     "name": "talanoff/impression-admin",
     "description": "Clean & beauty admin panel",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "version": "0.1.0",
     "authors": [
