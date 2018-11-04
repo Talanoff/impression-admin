@@ -11,11 +11,11 @@
 </template>
 
 <script>
-    import {quillEditor} from 'vue-quill-editor'
-    import 'quill/dist/quill.core.css'
-    import 'quill/dist/quill.snow.css'
+  import {quillEditor} from 'vue-quill-editor'
+  import 'quill/dist/quill.core.css'
+  import 'quill/dist/quill.snow.css'
 
-    export default {
+  export default {
         props: {
             name: {
                 type: String,
