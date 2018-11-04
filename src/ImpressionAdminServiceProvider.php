@@ -6,7 +6,7 @@ namespace Talanoff\ImpressionAdmin;
  * Class ImpressionAdminServiceProvider
  * @package Talanoff\ImpressionAdmin
  */
-class ImpressionAdmin extends \Illuminate\Support\ServiceProvider
+class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 {
 	public function register()
 	{
