@@ -26,5 +26,9 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 			__DIR__ . '/assets/sass' => resource_path('sass/admin'),
 			__DIR__ . '/assets/fonts' => resource_path('fonts'),
 		], 'assets');
+
+		$this->publishes([
+			__DIR__ . '/services' => base_path('app/Services'),
+		], 'services');
 	}
 }

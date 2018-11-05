@@ -17,8 +17,8 @@
 </head>
 <body>
 <div id="app">
-    @includeIf('partials.admin.layout.header')
-    @includeIf('partials.admin.layout.aside')
+    @includeIf('partials.admin.header')
+    @includeIf('partials.admin.aside')
 
     <main>
         @yield('content')
