@@ -19,4 +19,4 @@ php artisan vendor:publish --provider="Talanoff\ImpressionAdmin\ImpressionAdminS
 npm i bootstrap popper.js jquery simplebar vue vue-quill-editor axios imask -S
 ```
 
-[Impression icon-font reference](https://i.icomoon.io/public/reference.html#/temp/1f0041a654/Impression/svg)
+[Impression icon-font reference](https://i.icomoon.io/public/reference.html#/temp/5fe020f95e/Impression/svg)
