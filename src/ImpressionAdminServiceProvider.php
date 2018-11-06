@@ -2,6 +2,8 @@
 
 namespace Talanoff\ImpressionAdmin;
 
+use App\Services\Navigation;
+
 /**
  * Class ImpressionAdminServiceProvider
  * @package Talanoff\ImpressionAdmin
@@ -10,7 +12,9 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 {
 	public function register()
 	{
-		//
+		app()->singleton('nav', function() {
+			return new Navigation();
+		});
 	}
 
 	public function boot()

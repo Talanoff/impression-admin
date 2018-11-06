@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+use Talanoff\ImpressionAdmin\NavigationElement;
 
 class Navigation
 {
@@ -12,7 +13,7 @@ class Navigation
     public function backend()
     {
         return [
-            // new NavigationItem('Пользователи', 'users', 'i-users'),
+             new NavigationElement('Пользователи', 'users', 'i-users'),
         ];
     }
 }

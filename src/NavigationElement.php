@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class NavigationItem
+class NavigationElement
 {
     public $name;
     public $route;
