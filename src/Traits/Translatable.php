@@ -40,6 +40,6 @@ trait Translatable
 		if (is_null($lang)) {
 			$lang = app()->getLocale();
 		}
-		return !$this->translates()->whereLang($lang)->value($field)->isEmpty();
+		return !is_null($this->translates()->whereLang($lang)->value($field));
     }
 }
