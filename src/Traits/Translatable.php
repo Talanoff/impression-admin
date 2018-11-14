@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace Talanoff\ImpressionAdmin\Traits;
 
 
 use App\Models\Translate;
