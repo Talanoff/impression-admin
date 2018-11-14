@@ -8,8 +8,8 @@
                         <div class="unread">{{ $nav->unread }}</div>
                     @endisset
                     <a href="{!! route($nav->route) !!}" class="d-flex align-items-center">
-                        <i class="nav-icon i-{{ $nav['icon'] }} mr-3"></i>
-                        {{ $nav['name'] }}
+                        <i class="nav-icon {{ $nav->icon }} mr-3"></i>
+                        {{ $nav->name }}
                     </a>
                 </li>
             @endforeach
