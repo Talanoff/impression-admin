@@ -35,7 +35,7 @@ trait Translatable
 	 * @param null $lang
 	 * @return bool
 	 */
-	public function hasTranslate($field, $lang = null)
+	public function hasTranslation($field, $lang = null)
 	{
 		if (is_null($lang)) {
 			$lang = app()->getLocale();
