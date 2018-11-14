@@ -30,7 +30,7 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 		], 'assets');
 
 		$this->publishes([
-			__DIR__ . '/services' => base_path('app/Services'),
+			__DIR__ . '/Services' => base_path('app/Services'),
 		], 'services');
 	}
 }

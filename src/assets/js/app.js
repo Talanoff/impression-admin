@@ -1,23 +1,17 @@
 require('./bootstrap');
 
+import DataTables from './components/DataTables';
+import Editor from './components/Editor';
+
 new Vue({
-    el: '#app',
-    components: {
-        ImageUploader: require('./components/SingleImageUploader'),
-        Wysiwyg: require('./components/Wysiwyg'),
-    },
-    mounted() {
-        const notification = document.querySelectorAll('.notification');
-
-        if (notification.length) {
-            Array.from(notification).map(item => {
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 4000);
-            })
-        }
-
-        require('./modules/phone-mask');
-    }
+  el: '#app',
+  components: {
+    ...DataTables,
+    ...Editor,
+  },
+  mounted() {
+    require('./modules/notifications');
+    require('./modules/phone-mask');
+  }
 });
 

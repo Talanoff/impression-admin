@@ -1,6 +1,6 @@
 <?php
 
-namespace Talanoff\ImpressionAdmin;
+namespace Talanoff\ImpressionAdmin\Elements;
 
 class NavigationElement
 {
@@ -14,8 +14,10 @@ class NavigationElement
     {
         $this->name = $name;
         $this->route = "backend.{$route}.index";
-        $this->compare = "backend.{$route}.{$compare}";
-        $this->icon = $icon;
+		$this->icon = $icon;
+
+		$this->compare = $compare ? "backend.{$route}.{$compare}" : null;
+
         $this->unread = $unread;
     }
 }
