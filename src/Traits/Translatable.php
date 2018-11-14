@@ -29,4 +29,17 @@ trait Translatable
         }
         return $this->translates()->whereLang($lang)->value($field);
     }
+
+	/**
+	 * @param $field
+	 * @param null $lang
+	 * @return bool
+	 */
+	public function hasTranslate($field, $lang = null)
+	{
+		if (is_null($lang)) {
+			$lang = app()->getLocale();
+		}
+		return !$this->translates()->whereLang($lang)->value($field)->isEmpty();
+    }
 }
