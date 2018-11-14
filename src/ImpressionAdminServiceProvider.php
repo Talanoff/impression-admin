@@ -32,5 +32,9 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 		$this->publishes([
 			__DIR__ . '/Services' => base_path('app/Services'),
 		], 'services');
+
+		$this->publishes([
+			__DIR__ . '/Traits' => base_path('app/Traits'),
+		], 'traits');
 	}
 }
