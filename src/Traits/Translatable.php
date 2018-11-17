@@ -43,15 +43,36 @@ trait Translatable
 		return !is_null($this->translates()->whereLang($lang)->value($field));
     }
 
+	/**
+	 * @param $langs
+	 * @return $this
+	 */
 	public function makeTranslation($langs)
 	{
 		foreach ($langs as $lang) {
-			$this->create([
+			$this->translates()->create([
 				'lang' => $lang,
 				'title' => request($lang)['title'],
 				'description' => request($lang)['description'],
 				'body' => request($lang)['body'],
 			]);
 		}
+		return $this;
+    }
+
+	/**
+	 * @param $langs
+	 * @return $this
+	 */
+	public function updateTranslation($langs)
+	{
+		foreach ($langs as $lang) {
+			$this->translates()->whereLang($lang)->update([
+				'title' => request($lang)['title'],
+				'description' => request($lang)['description'],
+				'body' => request($lang)['body'],
+			]);
+		}
+		return $this;
     }
 }
