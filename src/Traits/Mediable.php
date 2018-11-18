@@ -75,13 +75,20 @@ trait Mediable
 	 * @param null $collection
 	 * @return $this
 	 */
-	public function clearMedia($collection = null)
+	public function clearCollection($collection = null)
 	{
 		$files = $this->collection($collection)->pluck('path')->all();
 		if (count($files)) {
 			Storage::delete($files);
 		}
 		$this->collection($collection)->delete();
+		return $this;
+	}
+
+	public function removeMedia()
+	{
+		Storage::delete($this->pluck('path')->all());
+		$this->delete();
 		return $this;
 	}
 
