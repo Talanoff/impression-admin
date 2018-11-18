@@ -52,8 +52,8 @@ trait Translatable
 			$this->translates()->create([
 				'lang' => $lang,
 				'title' => request($lang)['title'],
-				'description' => request($lang)['description'],
-				'body' => request($lang)['body'],
+				'description' => request($lang)['description'] ?? null,
+				'body' => request($lang)['body'] ?? null,
 			]);
 		}
 		return $this;
@@ -68,8 +68,8 @@ trait Translatable
 		foreach ($langs as $lang) {
 			$this->translates()->whereLang($lang)->update([
 				'title' => request($lang)['title'],
-				'description' => request($lang)['description'],
-				'body' => request($lang)['body'],
+				'description' => request($lang)['description'] ?? null,
+				'body' => request($lang)['body'] ?? null,
 			]);
 		}
 		return $this;
