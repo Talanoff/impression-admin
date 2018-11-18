@@ -2,7 +2,6 @@
 
 namespace Talanoff\ImpressionAdmin\Traits;
 
-
 use App\Models\Translate;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -20,9 +19,9 @@ trait Translatable
     /**
      * @param $field
      * @param string $lang
-     * @return mixed
+     * @return string
      */
-    public function translate($field, $lang = null)
+    public function translate($field, $lang = null): string
     {
         if (is_null($lang)) {
             $lang = app()->getLocale();
@@ -35,7 +34,7 @@ trait Translatable
 	 * @param null $lang
 	 * @return bool
 	 */
-	public function hasTranslation($field, $lang = null)
+	public function hasTranslation($field, $lang = null): bool
 	{
 		if (is_null($lang)) {
 			$lang = app()->getLocale();

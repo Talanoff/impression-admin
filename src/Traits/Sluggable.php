@@ -2,8 +2,6 @@
 
 namespace Talanoff\ImpressionAdmin\Traits;
 
-use Illuminate\Database\Eloquent\Builder;
-
 trait Sluggable
 {
     /**
@@ -27,14 +25,5 @@ trait Sluggable
             $slug = "{$slug}_" . (static::latest('id')->value('id') + 1);
         }
         $this->attributes['slug'] = $slug;
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope('order', function (Builder $builder) {
-            $builder->latest('id');
-        });
     }
 }
