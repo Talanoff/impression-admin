@@ -2,7 +2,7 @@
 
 namespace Talanoff\ImpressionAdmin\Traits;
 
-use App\Models\Media;
+use Talanoff\ImpressionAdmin\Models\Media;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Storage;
 use \Illuminate\Database\Eloquent\Collection;
