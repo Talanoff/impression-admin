@@ -34,7 +34,7 @@ trait Mediable
 	 */
 	public function getFirstMedia($collection = null)
 	{
-		return Storage::url($this->collection($collection)->first(['path'])->path);
+		return Storage::url(optional($this->collection($collection)->first())->path);
 	}
 
 	/**
