@@ -66,22 +66,26 @@ trait Mediable
 	/**
 	 * @param $input_name
 	 * @param string $collection
+	 * @param bool $originalName
+	 * @param null $lang
 	 * @return Mediable
 	 */
-	public function addMedia($input_name, $collection = 'uploads', $originalName = false)
+	public function addMedia($input_name, $collection = 'uploads', $originalName = false, $lang = null)
 	{
 		if (request()->hasFile($input_name)) {
+			$file = request()->file($input_name);
+			$data = [
+				'collection' => $collection,
+				'lang' => $lang,
+			];
+
 			if (!$originalName) {
-				$this->media()->create([
-					'path' => request()->file($input_name)->store($collection),
-					'collection' => $collection,
-				]);
+				$data['path'] = $file->store($collection);
 			} else {
-				$this->media()->create([
-					'path' => request()->file($input_name)->storeAs($collection, request()->file($input_name)->getClientOriginalName()),
-					'collection' => $collection,
-				]);
+				$data['path'] = $file->storeAs($collection, $file->getClientOriginalName());
 			}
+
+			$this->media()->create($data);
 		}
 		return $this;
 	}
