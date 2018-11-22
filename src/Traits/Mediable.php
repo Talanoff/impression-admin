@@ -31,14 +31,15 @@ trait Mediable
 
 	/**
 	 * @param null $collection
+	 * @param null $lang
 	 * @return string
 	 */
-	public function getFirstMedia($collection = null)
+	public function getFirstMedia($collection = null, $lang = null)
 	{
 		if (!$this->collection($collection)->first()) {
 			return null;
 		}
-		return Storage::url($this->collection($collection)->first()->path);
+		return Storage::url($this->collection($collection)->whereLang($lang)->first()->path);
 	}
 
 	/**
