@@ -41,19 +41,25 @@ trait Mediable
 		return Storage::url($this->collection($collection)->first()->path);
 	}
 
-	public function getFirstMediaName($collection = null)
+	/**
+	 * @param null $collection
+	 * @param null $lang
+	 * @return bool|string
+	 */
+	public function getFirstMediaName($collection = null, $lang = null)
 	{
-		$str = $this->collection($collection)->first()->path;
+		$str = $this->collection($collection)->whereLang($lang)->first()->path;
 		return substr($str, strrpos($str, '/') + 1);
 	}
 
 	/**
 	 * @param null $collection
+	 * @param null $lang
 	 * @return string
 	 */
-	public function getFirstMediaId($collection = null)
+	public function getFirstMediaId($collection = null, $lang = null)
 	{
-		return optional($this->collection($collection)->first())->id;
+		return optional($this->collection($collection)->whereLang($lang)->first())->id;
 	}
 
 	/**
