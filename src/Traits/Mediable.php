@@ -102,11 +102,12 @@ trait Mediable
 
 	/**
 	 * @param null $collection
+	 * @param null $lang
 	 * @return bool
 	 */
-	public function hasMedia($collection = null): bool
+	public function hasMedia($collection = null, $lang = null): bool
 	{
-		return $this->collection($collection)->count() > 0;
+		return $this->collection($collection)->whereLang($lang)->count() > 0;
 	}
 
 	/**
