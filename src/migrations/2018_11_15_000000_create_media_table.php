@@ -19,6 +19,7 @@ class CreateMediaTable extends Migration
             $table->unsignedInteger('mediable_id');
             $table->string('path');
             $table->string('collection');
+            $table->string('lang')->nullable();
             $table->timestamps();
         });
     }

@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Media extends Model
 {
-    protected $fillable = [
-        'path',
-        'collection',
-    ];
+	protected $fillable = [
+		'path',
+		'collection',
+		'lang',
+	];
 
-    /**
-     * @return MorphTo
-     */
-    public function mediable(): MorphTo
-    {
-        return $this->morphTo();
-    }
+	/**
+	 * @return MorphTo
+	 */
+	public function mediable(): MorphTo
+	{
+		return $this->morphTo();
+	}
 }
