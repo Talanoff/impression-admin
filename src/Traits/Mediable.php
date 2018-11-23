@@ -22,7 +22,7 @@ trait Mediable
 	 * @param null $collection
 	 * @return Collection
 	 */
-	public function getMedia($collection = null): Collection
+	public function getMedia($collection = 'uploads'): Collection
 	{
 		return $this->collection($collection)->get(['path'])->map(function ($image) {
 			return Storage::url($image);
@@ -34,7 +34,7 @@ trait Mediable
 	 * @param null $lang
 	 * @return string
 	 */
-	public function getFirstMedia($collection = null, $lang = null)
+	public function getFirstMedia($collection = 'uploads', $lang = null)
 	{
 		if (!$this->collection($collection)->first()) {
 			return null;
@@ -47,7 +47,7 @@ trait Mediable
 	 * @param null $lang
 	 * @return bool|string
 	 */
-	public function getFirstMediaName($collection = null, $lang = null)
+	public function getFirstMediaName($collection = 'uploads', $lang = null)
 	{
 		$str = $this->collection($collection)->whereLang($lang)->first()->path;
 		return substr($str, strrpos($str, '/') + 1);
@@ -58,7 +58,7 @@ trait Mediable
 	 * @param null $lang
 	 * @return string
 	 */
-	public function getFirstMediaId($collection = null, $lang = null)
+	public function getFirstMediaId($collection = 'uploads', $lang = null)
 	{
 		return optional($this->collection($collection)->whereLang($lang)->first())->id;
 	}
@@ -116,7 +116,7 @@ trait Mediable
 	 * @param null $lang
 	 * @return bool
 	 */
-	public function hasMedia($collection = null, $lang = null): bool
+	public function hasMedia($collection = 'uploads', $lang = null): bool
 	{
 		return $this->collection($collection)->whereLang($lang)->count() > 0;
 	}
@@ -125,7 +125,7 @@ trait Mediable
 	 * @param null $collection
 	 * @return $this
 	 */
-	public function clearMedia($collection = null)
+	public function clearMedia($collection = 'uploads')
 	{
 		$files = $this->collection($collection)->pluck('path')->all();
 		if (count($files)) {
