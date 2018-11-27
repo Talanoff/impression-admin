@@ -21,8 +21,8 @@ trait Sluggable
     public function setSlugAttribute($value)
     {
         $item = static::whereSlug($slug = str_slug($value));
-        if ($item->exists() && $item->count() > 1) {
-            $slug = "{$slug}_" . (static::latest('id')->value('id') + 1);
+        if ($item->exists()) {
+            $slug = "{$slug}-" . ($item->value('id') + 1);
         }
         $this->attributes['slug'] = $slug;
     }
