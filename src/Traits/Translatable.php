@@ -16,12 +16,12 @@ trait Translatable
         return $this->morphMany(Translate::class, 'translatable');
     }
 
-    /**
-     * @param $field
-     * @param string $lang
-     * @return string
-     */
-    public function translate($field, $lang = null): string
+	/**
+	 * @param $field
+	 * @param null $lang
+	 * @return mixed
+	 */
+    public function translate($field, $lang = null)
     {
         if (is_null($lang)) {
             $lang = app()->getLocale();
