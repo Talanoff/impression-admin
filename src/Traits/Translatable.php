@@ -46,9 +46,9 @@ trait Translatable
 	 * @param $langs
 	 * @return $this
 	 */
-	public function makeTranslation($langs)
+	public function makeTranslation()
 	{
-		foreach ($langs as $lang) {
+		foreach (config('app.locales') as $lang) {
 			$this->translates()->create([
 				'lang' => $lang,
 				'title' => request($lang)['title'],
@@ -63,9 +63,9 @@ trait Translatable
 	 * @param $langs
 	 * @return $this
 	 */
-	public function updateTranslation($langs)
+	public function updateTranslation()
 	{
-		foreach ($langs as $lang) {
+		foreach (config('app.locales') as $lang) {
 			$this->translates()->whereLang($lang)->update([
 				'title' => request($lang)['title'],
 				'description' => request($lang)['description'] ?? null,
