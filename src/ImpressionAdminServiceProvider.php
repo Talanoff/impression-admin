@@ -38,7 +38,7 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 		], 'migrations');
 
 		$this->publishes([
-			__DIR__ . '/configs' => base_path('app/config'),
+			__DIR__ . '/configs' => base_path('config'),
 		], 'config');
 	}
 }
