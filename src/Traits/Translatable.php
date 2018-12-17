@@ -2,7 +2,6 @@
 
 namespace Talanoff\ImpressionAdmin\Traits;
 
-use App\Models\Translate;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait Translatable
@@ -13,7 +12,7 @@ trait Translatable
      */
     public function translates(): MorphMany
     {
-        return $this->morphMany(Translate::class, 'translatable');
+        return $this->morphMany(config('impression-admin.translatable_class'), 'translatable');
     }
 
 	/**
