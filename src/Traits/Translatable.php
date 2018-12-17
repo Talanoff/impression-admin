@@ -43,7 +43,6 @@ trait Translatable
     }
 
 	/**
-	 * @param $langs
 	 * @return $this
 	 */
 	public function makeTranslation()
@@ -60,7 +59,6 @@ trait Translatable
     }
 
 	/**
-	 * @param $langs
 	 * @return $this
 	 */
 	public function updateTranslation()
