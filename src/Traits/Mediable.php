@@ -15,11 +15,11 @@ trait Mediable
 	 */
 	public function media(): MorphMany
 	{
-		return $this->morphMany(Media::class, 'mediable');
+		return $this->morphMany(config('impression-admin.mediable_class'), 'mediable');
 	}
 
 	/**
-	 * @param null $collection
+	 * @param string $collection
 	 * @return Collection
 	 */
 	public function getMedia($collection = 'uploads'): Collection
@@ -30,27 +30,16 @@ trait Mediable
 	}
 
 	/**
-	 * @param null $collection
+	 * @param string $collection
 	 * @param null $lang
 	 * @return string
 	 */
-	public function getFirstMedia($collection = 'uploads', $lang = null)
+	public function getFirstMediaUrl($collection = 'uploads', $lang = null)
 	{
 		if (!$this->collection($collection)->first()) {
 			return null;
 		}
 		return Storage::url($this->collection($collection)->whereLang($lang)->first()->path);
-	}
-
-	/**
-	 * @param null $collection
-	 * @param null $lang
-	 * @return bool|string
-	 */
-	public function getFirstMediaName($collection = 'uploads', $lang = null)
-	{
-		$str = $this->collection($collection)->whereLang($lang)->first()->path;
-		return substr($str, strrpos($str, '/') + 1);
 	}
 
 	/**
@@ -70,7 +59,7 @@ trait Mediable
 	 * @param null $lang
 	 * @return Mediable
 	 */
-	public function addMedia($input_name, $collection = 'uploads', $originalName = false, $lang = null)
+	public function addMediaFromRequest($input_name, $collection = 'uploads', $originalName = false, $lang = null)
 	{
 		if (request()->hasFile($input_name)) {
 			$file = request()->file($input_name);
@@ -98,7 +87,7 @@ trait Mediable
 	public function storeMedia($file_path, $collection = 'uploads')
 	{
 		$image = Storage::putFile($collection, new File($file_path));
-		Storage::delete('mediatemp' . substr($file_path, strrpos($file_path, '/')));
+		Storage::delete(storage_path('mediatemp') . substr($file_path, strrpos($file_path, '/')));
 		return $image;
 	}
 

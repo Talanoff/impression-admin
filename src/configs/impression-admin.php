@@ -1,6 +1,6 @@
 <?php
 
 return [
-	'translatable_class' => 'App\\Models\\Translate',
-	'mediable_class' => 'App\\Models\\Media',
+	'translatable_class' => 'Talanoff\\ImpressionAdmin\\Models\\Translate',
+	'mediable_class' => 'Talanoff\\ImpressionAdmin\\Models\\Media',
 ];
