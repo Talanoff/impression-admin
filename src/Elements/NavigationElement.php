@@ -11,13 +11,28 @@ class NavigationElement
 	public $unread;
 	public $submenu;
 
-	public function __construct($name, $route, $icon = 'i-settings', $compare = '*', $unread = null, $submenu = [])
+	public function __construct($args)
 	{
-		$this->name = $name;
-		$this->route = config('impression-admin.route') . ".{$route}.index";
-		$this->icon = $icon;
-		$this->compare = $compare ? config('impression-admin.route') . ".{$route}.{$compare}" : null;
-		$this->unread = $unread;
-		$this->submenu = (object) $submenu;
+		if (!is_array($args)) {
+			return null;
+		}
+
+		$args = (object) $args;
+
+		$this->name = $args->name;
+		$this->icon = $args->icon ?? 'i-settings';
+		$this->route = config('impression-admin.route') . ".{$args->route}.index";
+		$this->unread = $args->unread ?? null;
+
+		if (is_array($args->compare)) {
+			$current = explode('.', app('router')->currentRouteName());
+			$this->compare = collect($current)->contains(function($r) use ($args) {
+				return in_array($r, $args->compare);
+			});
+		} else {
+			$this->compare = app('router')->currentRouteNamed(config('impression-admin.route') . ".{$args->route}.{$args->compare}");
+		}
+
+		$this->submenu = (object) $args->submenu;
 	}
 }
