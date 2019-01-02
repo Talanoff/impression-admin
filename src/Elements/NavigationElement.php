@@ -17,7 +17,7 @@ class NavigationElement
 			return null;
 		}
 
-		$args = (object) $args;
+		$args = (object)$args;
 
 		$this->name = $args->name;
 		$this->icon = $args->icon ?? 'i-settings';
@@ -27,16 +27,21 @@ class NavigationElement
 		if (isset($args->compare)) {
 			if (is_array($args->compare)) {
 				$current = explode('.', app('router')->currentRouteName());
-				$this->compare = collect($current)->contains(function($r) use ($args) {
+				$this->compare = collect($current)->contains(function ($r) use ($args) {
 					return in_array($r, $args->compare);
 				});
 			} else {
-				$this->compare = app('router')->currentRouteNamed(config('impression-admin.route') . ".{$args->route}.{$args->compare}");
+				$this->compare =
+					app('router')->currentRouteNamed(config('impression-admin.route') . ".{$args->route}.{$args->compare}");
 			}
 		} else {
 			$this->compare = app('router')->currentRouteNamed(config('impression-admin.route') . ".{$args->route}.*");
 		}
 
-		$this->submenu = (object) $args->submenu;
+		if (isset($args->submenu)) {
+			$this->submenu = (object)$args->submenu;
+		} else {
+			$this->submenu = null;
+		}
 	}
 }
