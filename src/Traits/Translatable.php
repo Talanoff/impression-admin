@@ -6,27 +6,27 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait Translatable
 {
-    /**
-     * Get all translates
-     * @return MorphMany
-     */
-    public function translates(): MorphMany
-    {
-        return $this->morphMany(config('impression-admin.translatable_class'), 'translatable');
-    }
+	/**
+	 * Get all translates
+	 * @return MorphMany
+	 */
+	public function translates(): MorphMany
+	{
+		return $this->morphMany(config('impression-admin.translatable_class'), 'translatable');
+	}
 
 	/**
 	 * @param $field
 	 * @param null $lang
 	 * @return mixed
 	 */
-    public function translate($field, $lang = null)
-    {
-        if (is_null($lang)) {
-            $lang = app()->getLocale();
-        }
-        return $this->translates()->whereLang($lang)->value($field);
-    }
+	public function translate($field, $lang = null)
+	{
+		if (is_null($lang)) {
+			$lang = app()->getLocale();
+		}
+		return $this->translates()->whereLang($lang)->value($field);
+	}
 
 	/**
 	 * @param $field
@@ -39,7 +39,7 @@ trait Translatable
 			$lang = app()->getLocale();
 		}
 		return !is_null($this->translates()->whereLang($lang)->value($field));
-    }
+	}
 
 	/**
 	 * @return $this
@@ -55,7 +55,7 @@ trait Translatable
 			]);
 		}
 		return $this;
-    }
+	}
 
 	/**
 	 * @return $this
@@ -70,5 +70,20 @@ trait Translatable
 			]);
 		}
 		return $this;
-    }
+	}
+
+	public function getTitleAttribute(): string
+	{
+		return $this->translate('title');
+	}
+
+	public function getDescriptionAttribute(): string
+	{
+		return $this->translate('description');
+	}
+
+	public function getBodyAttribute(): string
+	{
+		return $this->translate('body');
+	}
 }
