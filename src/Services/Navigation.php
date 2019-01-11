@@ -1,6 +1,6 @@
 <?php
 
-namespace Talanoff\ImpressionAdmin\Services;
+namespace App\Services;
 use Talanoff\ImpressionAdmin\Elements\NavigationElement;
 
 class Navigation
