@@ -72,17 +72,26 @@ trait Translatable
 		return $this;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getTitleAttribute(): string
 	{
 		return $this->translate('title');
 	}
 
-	public function getDescriptionAttribute(): string
+	/**
+	 * @return mixed
+	 */
+	public function getDescriptionAttribute()
 	{
 		return $this->translate('description');
 	}
 
-	public function getBodyAttribute(): string
+	/**
+	 * @return mixed
+	 */
+	public function getBodyAttribute()
 	{
 		return $this->translate('body');
 	}

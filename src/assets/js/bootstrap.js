@@ -1,10 +1,10 @@
-window._ = require('lodash');
 window.Vue = require('vue');
 window.axios = require('axios');
 
 try {
   window.$ = window.jQuery = require('jquery');
   window.Popper = require('popper.js');
+  require('bootstrap');
 } catch (e) {
 }
 
