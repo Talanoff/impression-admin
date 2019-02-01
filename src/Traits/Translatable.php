@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait Translatable
 {
-	private $with = [
-		'translates',
-	];
-
 	/**
 	 * Get all translates
 	 * @return MorphMany
