@@ -73,9 +73,9 @@ trait Translatable
 	}
 
 	/**
-	 * @return string
+	 * @return mixed
 	 */
-	public function getTitleAttribute(): string
+	public function getTitleAttribute()
 	{
 		return $this->translate('title');
 	}
