@@ -12,7 +12,7 @@ trait Translatable
 	 */
 	public function translates(): MorphMany
 	{
-		return $this->morphMany(config('impression-admin.translatable_class'), 'translatable');
+		return $this->morphMany(config('ib-admin.translatable_class'), 'translatable');
 	}
 
 	/**
@@ -41,58 +41,64 @@ trait Translatable
 		return !is_null($this->translates()->whereLang($lang)->value($field));
 	}
 
-	/**
-	 * @return $this
-	 */
-	public function makeTranslation()
-	{
-		foreach (config('app.locales') as $lang) {
-			$this->translates()->create([
-				'lang' => $lang,
-				'title' => request($lang)['title'],
-				'description' => request($lang)['description'] ?? null,
-				'body' => request($lang)['body'] ?? null,
-			]);
-		}
-		return $this;
-	}
+    /**
+     * @return $this
+     */
+    public function makeTranslation()
+    {
+        foreach (config('app.locales') as $lang) {
+            $attrs = [
+                'lang' => $lang,
+                'title' => request($lang)['title'],
+            ];
 
-	/**
-	 * @return $this
-	 */
-	public function updateTranslation()
-	{
-		foreach (config('app.locales') as $lang) {
-			$this->translates()->whereLang($lang)->update([
-				'title' => request($lang)['title'],
-				'description' => request($lang)['description'] ?? null,
-				'body' => request($lang)['body'] ?? null,
-			]);
-		}
-		return $this;
-	}
+            if (isset(request($lang)['content'])) {
+                foreach (request($lang)['content'] as $key => $data) {
+                    $attrs['content'][$key] = $data;
+                }
+            }
 
-	/**
-	 * @return mixed
-	 */
-	public function getTitleAttribute()
-	{
-		return $this->translate('title');
-	}
+            $this->translates()->create($attrs);
+        }
+        return $this;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getDescriptionAttribute()
-	{
-		return $this->translate('description');
-	}
+    /**
+     * @return $this
+     */
+    public function updateTranslation()
+    {
+        foreach (config('app.locales') as $lang) {
+            $attrs = [
+                'title' => request($lang)['title'],
+            ];
 
-	/**
-	 * @return mixed
-	 */
-	public function getBodyAttribute()
-	{
-		return $this->translate('body');
-	}
+            if (isset(request($lang)['content'])) {
+                foreach (request($lang)['content'] as $key => $data) {
+                    $attrs['content'][$key] = $data;
+                }
+            }
+
+            $this->translates()->updateOrCreate([
+                'lang' => $lang,
+            ], $attrs);
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitleAttribute()
+    {
+        return $this->translate('title');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContentAttribute()
+    {
+        return (object)$this->translate('content');
+    }
 }

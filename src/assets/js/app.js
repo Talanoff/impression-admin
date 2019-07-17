@@ -1,13 +1,15 @@
 require('./bootstrap');
-require('simplebar');
-import 'simplebar/dist/simplebar.css';
 
-import Editor from './components/Editor';
+import {Wysiwyg, SingleUploader, MultiUploader, BlockEditor, Options} from './components/Editor';
 
 new Vue({
   el: '#app',
   components: {
-    ...Editor,
+    Wysiwyg,
+    SingleUploader,
+    MultiUploader,
+    BlockEditor,
+    Options
   },
   mounted() {
     require('./modules/notifications');

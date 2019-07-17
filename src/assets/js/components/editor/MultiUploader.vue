@@ -1,13 +1,9 @@
 <template>
     <div>
         <div class="row images-list mb-2" v-if="images.length">
-            <div class="col-md-6 col-lg-4" v-for="(image, index) in images">
+            <div class="col-md-6 col-lg-4" v-for="(image, index) in images" :key="index">
                 <div class="image-preview rounded"
-                     :style="{backgroundImage: `url(${image.src})`}">
-                    <a @click.prevent="removeImage(index, image.remove)" v-if="image !== ''"
-                       class="btn btn-danger btn-delete d-flex justify-content-center align-items-center">
-                        <i class="i-trash text-white"></i>
-                    </a>
+                     :style="{backgroundImage: `url(${image.preview})`}">
                 </div>
             </div>
         </div>
@@ -20,9 +16,6 @@
                 <div v-if="tooltip">({{ tooltip }})</div>
             </div>
         </label>
-
-        <input type="hidden" :name="`${name}[]`" v-for="image in images" :value="image.src"
-               v-if="images.length && image.remove === null">
     </div>
 </template>
 
@@ -33,10 +26,13 @@
       name: {
         type: String,
         default() {
-          return 'files';
+          return 'image';
         }
       },
-      tooltip: String
+      model: String,
+      modelId: Number | String,
+      collection: String,
+      tooltip: String,
     },
     data() {
       return {
@@ -44,22 +40,36 @@
       }
     },
     methods: {
+      async uploadFile(formData) {
+        await axios.post('/admin/media/upload', formData)
+          .then(({data}) => {
+            this.images.push(data);
+          });
+      },
+
       handleImages(event) {
-        if (event.target.files && event.target.files[0]) {
-          for (let i = 0; i < event.target.files.length; i++) {
-            const reader = new FileReader();
+        const fileList = event.target.files;
 
-            reader.onload = function (e) {
-              this.images.push({
-                src: e.target.result,
-                remove: null,
-              });
-            }.bind(this);
+        if (!fileList.length) return;
 
-            reader.readAsDataURL(event.target.files[i]);
+        for (let i = 0; i < event.target.files.length; i++) {
+          const formData = new FormData();
+          let file = fileList[i];
+          formData.set('image', file);
+
+          if (this.model && this.modelId) {
+            formData.set('model', this.model);
+            formData.set('model_id', this.modelId);
           }
+
+          if (this.collection) {
+            formData.set('collection', this.collection);
+          }
+
+          this.uploadFile(formData);
         }
       },
+
       removeImage(index, route) {
         if (!!route) {
           axios.delete(route);
@@ -67,12 +77,6 @@
 
         this.images.splice(index, 1);
       }
-    },
-    mounted() {
-      // if (this.src) {
-      //     const images = JSON.parse(this.src);
-      //     this.images.push(...images);
-      // }
     }
   }
 </script>
@@ -83,17 +87,18 @@
     }
 
     .images-list {
-        margin: -5px;
+        margin: -0.5rem;
 
         [class^="col"] {
-            padding: 5px;
+            padding: 0.5rem;
         }
     }
 
     .image-preview {
         position: relative;
-        background-size: cover;
+        background-size: contain;
         background-position: 50% 50%;
+        background-repeat: no-repeat;
         padding-top: 100%;
         overflow: hidden;
 
@@ -101,8 +106,8 @@
             opacity: 0;
             padding: 0;
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 5px;
+            right: 5px;
             width: 24px;
             height: 24px;
             border-radius: 50%;
@@ -131,5 +136,9 @@
             position: absolute;
             left: -9999px;
         }
+    }
+
+    .material-icons {
+        font-size: 14px;
     }
 </style>

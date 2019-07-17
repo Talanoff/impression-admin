@@ -1,20 +1,19 @@
 # Impression Admin.
 Laravel simple, clean and beauty admin library.
 
-### Installation
+### Установка
 
 ```sh
 composer require talanoff/impression-admin
 ```
 
-Publish all assets and views.
+Публикация конфигураций, сервисов, вьюшек, стилей и скриптов одной командой:
 ```sh
 php artisan vendor:publish --provider="Talanoff\ImpressionAdmin\ImpressionAdminServiceProvider"
 ```
 
-
 ### NPM dependencies
 
 ```sh
-npm i bootstrap popper.js jquery simplebar vue vue-quill-editor axios imask -S
+npm i bootstrap vue tiptap tiptap-extensions vue-perfect-scrollbar vue-select axios imask -S
 ```

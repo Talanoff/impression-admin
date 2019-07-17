@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Translate extends Model
 {
-	protected $fillable = [
-		'lang',
-		'title',
-		'description',
-		'body',
-		'field',
-	];
+    protected $fillable = [
+        'lang',
+        'title',
+        'content',
+        'field',
+    ];
+
+    protected $casts = [
+        'content' => 'array',
+    ];
 
 	/**
 	 * @return MorphTo

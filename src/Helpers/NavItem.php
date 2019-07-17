@@ -1,8 +1,8 @@
 <?php
 
-namespace Talanoff\ImpressionAdmin\Elements;
+namespace Talanoff\ImpressionAdmin\Helpers;
 
-class NavigationElement
+class NavItem
 {
 	public $name;
 	public $route;

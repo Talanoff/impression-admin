@@ -1,7 +1,7 @@
 <template>
     <div class="block-editor">
-        <div class="block-editor__header d-flex justify-content-between align-items-start">
-            <h4 class="flex-shrink-1 mb-0" v-if="title">{{ title }}</h4>
+        <div class="block-editor__header d-flex justify-content-between align-items-center">
+            <h6 class="flex-shrink-1 mb-0" v-if="title">{{ title }}</h6>
 
             <div class="lang-switcher btn-group ml-auto" v-if="multilang">
                 <button type="button" class="btn btn-sm"
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+  const locales = JSON.parse(document.head.querySelector('[name="locales"]').content);
+
   export default {
     props: {
       title: String,
@@ -38,15 +40,15 @@
     },
     data() {
       return {
-        current: 'ru',
-        locales: JSON.parse(document.head.querySelector('[name="locales"]').content),
+        current: locales[0],
+        locales: locales,
         langs: []
       }
     },
     mounted() {
       const langs = {
         ru: 'Русский',
-        ua: 'Українська',
+        uk: 'Українська',
         en: 'English'
       };
       this.langs = this.locales.map(l => {

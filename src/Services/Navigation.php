@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-use Talanoff\ImpressionAdmin\Elements\NavigationElement;
+use Talanoff\ImpressionAdmin\Helpers\NavItem;
 
 class Navigation
 {

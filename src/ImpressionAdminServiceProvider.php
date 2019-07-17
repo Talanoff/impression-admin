@@ -26,7 +26,7 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 		$this->publishes([
 			__DIR__ . '/assets/js' => resource_path('js/admin'),
 			__DIR__ . '/assets/sass' => resource_path('sass/admin'),
-			__DIR__ . '/assets/fonts' => resource_path('fonts'),
+			__DIR__ . '/assets/fonts/iconfont' => public_path('fonts'),
 		], 'assets');
 
 		$this->publishes([
@@ -34,7 +34,7 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 		], 'services');
 
 		$this->publishes([
-			__DIR__ . '/migrations' => base_path('app/database/migrations'),
+			__DIR__ . '/migrations' => base_path('database/migrations'),
 		], 'migrations');
 
 		$this->publishes([
