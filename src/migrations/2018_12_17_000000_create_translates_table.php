@@ -19,8 +19,7 @@ class CreateTranslatesTable extends Migration
 			$table->unsignedInteger('translatable_id');
 			$table->string('lang');
 			$table->string('title');
-			$table->text('description')->nullable();
-			$table->mediumText('body')->nullable();
+            $table->json('content')->nullable();
             $table->timestamps();
         });
     }
