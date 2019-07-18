@@ -6,6 +6,6 @@ return [
 
     'breadcrumbs' => [
         'home_name' => '',
-        'home_link' => url('/')
+        'home_link' => config('app.url')
     ]
 ];
