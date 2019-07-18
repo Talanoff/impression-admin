@@ -21,7 +21,7 @@ class NavItem
 
 		$this->name = $args->name;
 		$this->icon = $args->icon ?? 'i-settings';
-		$this->route = config('impression-admin.admin_prefix') . ".{$args->route}.index";
+		$this->route = config('ib-admin.admin.prefix') . ".{$args->route}.index";
 		$this->unread = $args->unread ?? null;
 
 		if (isset($args->compare)) {
@@ -32,10 +32,10 @@ class NavItem
 				});
 			} else {
 				$this->compare =
-					app('router')->currentRouteNamed(config('impression-admin.admin_prefix') . ".{$args->route}.{$args->compare}");
+					app('router')->currentRouteNamed(config('ib-admin.admin.prefix') . ".{$args->route}.{$args->compare}");
 			}
 		} else {
-			$this->compare = app('router')->currentRouteNamed(config('impression-admin.admin_prefix') . ".{$args->route}.*");
+			$this->compare = app('router')->currentRouteNamed(config('ib-admin.admin.prefix') . ".{$args->route}.*");
 		}
 
 		if (isset($args->submenu)) {

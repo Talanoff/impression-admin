@@ -13,7 +13,11 @@ class Navigation
     public function backend()
     {
         return [
-//             new NavigationElement('Пользователи', 'users', 'i-users'),
+//             new NavItem([
+//                 'name' => 'Пресс-центр',
+//                 'route' => 'posts',
+//                 'icon' => 'i-clipboard',
+//             ]),
         ];
     }
 }

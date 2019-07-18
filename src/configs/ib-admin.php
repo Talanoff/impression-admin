@@ -2,7 +2,10 @@
 
 return [
 	'translatable_class' => 'Talanoff\\ImpressionAdmin\\Models\\Translate',
-	'admin_prefix' => 'admin',
+
+	'admin' => [
+	    'prefix' => 'admin'
+    ],
 
     'breadcrumbs' => [
         'home_name' => '',
