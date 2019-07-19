@@ -17,6 +17,7 @@
 </head>
 <body>
 <div id="app">
+    @includeIf('partials.admin.icons')
     @includeIf('partials.admin.header')
     @includeIf('partials.admin.aside')
 

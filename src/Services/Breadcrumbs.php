@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace Talanoff\ImpressionAdmin\Services;
 
 use Talanoff\ImpressionAdmin\Helpers\Breadcrumb;
 
