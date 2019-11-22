@@ -15,5 +15,5 @@ php artisan vendor:publish --provider="Talanoff\ImpressionAdmin\ImpressionAdminS
 ### NPM dependencies
 
 ```sh
-npm i bootstrap vue tiptap tiptap-extensions vue-perfect-scrollbar vue-select axios imask -S
+npm i bootstrap vue tiptap tiptap-extensions vue-perfect-scrollbar vue-select imask -S
 ```
