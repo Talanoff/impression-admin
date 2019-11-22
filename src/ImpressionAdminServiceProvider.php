@@ -10,9 +10,7 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 {
 	public function register()
 	{
-		app()->singleton('nav', function() {
-			return new \App\Services\Navigation();
-		});
+		//
 	}
 
 	public function boot()
@@ -32,10 +30,6 @@ class ImpressionAdminServiceProvider extends \Illuminate\Support\ServiceProvider
 		$this->publishes([
 			__DIR__ . '/Services' => base_path('app/Services'),
 		], 'services');
-
-		$this->publishes([
-			__DIR__ . '/migrations' => base_path('database/migrations'),
-		], 'migrations');
 
 		$this->publishes([
 			__DIR__ . '/configs' => base_path('config'),
